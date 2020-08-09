@@ -1,5 +1,5 @@
-from flask import render_template, request
-
+from flask import render_template, request, abort
+from jinja2.exceptions import TemplateNotFound
 from app import app
 
 
@@ -10,4 +10,12 @@ def index():
 
 @app.route("/script/<script_name>")
 def get_script(script_name):
-    return render_template(script_name, data=request.args, script_name=script_name)
+    try:
+        return render_template(script_name, data=request.args, script_name=script_name)
+    except TemplateNotFound as ex:
+        abort(
+            404,
+            description='"Unknown {script_name}" script!!'.format(
+                script_name=script_name
+            ),
+        )
