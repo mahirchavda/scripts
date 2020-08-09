@@ -1,0 +1,15 @@
+{% set splunk_home = data.get("splunk_home") or "/opt/splunk" %}
+{% set alias_suffix = data.get("alias_suffix") or "" %}
+
+### START {{ script_name }}
+# Make Splunk CLI Commands Shorter
+sp{{ alias_suffix }}_home="{{ splunk_home }}"
+export sp{{ alias_suffix }}_home
+alias sp{{ alias_suffix }}="$sp{{ alias_suffix }}_home/bin/splunk"
+alias log{{ alias_suffix }}="cd $sp{{ alias_suffix }}_home/var/log/splunk"
+alias modinput{{ alias_suffix }}="cd $sp{{ alias_suffix }}_home/var/lib/splunk/modinputs"
+alias app{{ alias_suffix }}="cd $sp{{ alias_suffix }}_home/etc/apps"
+alias rr{{ alias_suffix }}="sp{{ alias_suffix }} restart"
+alias sclean{{ alias_suffix }}="sp{{ alias_suffix }} clean eventdata -f"
+alias ssclean{{ alias_suffix }}="sp{{ alias_suffix }} stop && sp{{ alias_suffix }} clean eventdata -f && sp{{ alias_suffix }} start"
+### END {{ script_name }}
