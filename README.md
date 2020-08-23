@@ -8,10 +8,22 @@ Hosted on HEROKU: https://scripts-mahirchavda.herokuapp.com/
 ### Script Endpoint: https://scripts-mahirchavda.herokuapp.com/script/<script_name>
 
 Currently available script_names are:
+* [install_miniconda](#install_miniconda)
 * [splunk_alias](#splunk_alias)
 
+---
+
+#### install_miniconda: https://scripts-mahirchavda.herokuapp.com/script/install_miniconda
+* returns the bash commands to install miniconda
+
+Example to install miniconda
+```bash
+curl https://scripts-mahirchavda.herokuapp.com/script/install_miniconda | bash
+```
+
+
 #### splunk_alias: https://scripts-mahirchavda.herokuapp.com/script/splunk_alias
-* This endpoint returns the alias for often used splunk cli commands
+* returns the alias for often used splunk cli commands
 
 To configure the alias run below command in your linux shell:
 ```bash
