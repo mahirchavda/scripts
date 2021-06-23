@@ -42,8 +42,9 @@ Splunk cli commands and it's alias
 | cd into the Splunk apps folder | cd /opt/splunk/etc/apps | app |
 | cd into the Splunk log folder |	cd /opt/splunk/var/log/splunk	| log |
 | cd into Splunk modinput folder | cd /opt/splunk/var/lib/splunk/modinputs	| modinput |
-| To clean all the indexed we have to perform below step: <br/>1) stop splunk<br/>2) clean indexes data<br/>3) start splunk | 1) /opt/splunk/bin/splunk stop<br/>2) /opt/splunk/bin/splunk clean eventdata -f<br/>3) /opt/splunk/bin/splunk start | ssclean |
 | To just clean eventdata | /opt/splunk/bin/splunk clean eventdata -f | sclean |
+| To clean all the indexed eventdata; we have to perform below steps: <br/>1) stop splunk<br/>2) clean indexes data<br/>3) start splunk | 1) /opt/splunk/bin/splunk stop<br/>2) /opt/splunk/bin/splunk clean eventdata -f<br/>3) /opt/splunk/bin/splunk start | ssclean |
+| To clean all the indexed eventdata, remove logs and remove modinputs; we have to perform below steps: <br/>1) stop splunk<br/>2) clean indexes data<br/>3) cd into log folder and remove all files<br/>4) cd into modinput folder and remove all files<br/> 5) start splunk | 1) /opt/splunk/bin/splunk stop<br/>2) /opt/splunk/bin/splunk clean eventdata -f<br/> 3) cd /opt/splunk/var/log/splunk && rm -rf *<br/> 4) cd /opt/splunk/var/lib/splunk/modinputs && rm -rf *<br/> 5) /opt/splunk/bin/splunk start | sssclean |
 | 1) Stop Splunk<br/>2) Navigate to the Splunk log folder<br/>3) Delete all files and folder<br/>4) Navigate to the Splunk modinput folder<br/>5) Delete all files and folder<br/>6) Clean all the indexed data<br/>7) Navigate to the Splunk apps folder<br/>8) Remove Splunk_TA_cisco-ucs app<br/>9) Start Splunk | 1) /opt/splunk/bin/splunk stop<br/>2) cd /opt/splunk/var/log/splunk<br/>3) rm -rf *<br/>4) cd /opt/splunk/var/lib/splunk/modinputs<br/>5) rm -rf *<br/>6) /opt/splunk/bin/splunk clean eventdata -f<br/>7) cd /opt/splunk/etc/apps<br/>8) rm -rf Splunk_TA_cisco-ucs<br/>9) /opt/splunk/bin/splunk start | sp stop && log && rm -rf * && modinput && rm -rf * && sclean && app && rm -rf Splunk_TA_cisco-ucs && sp start |
 
 
@@ -70,6 +71,7 @@ alias modinput2="cd $sp2_home/var/lib/splunk/modinputs"
 alias app2="cd $sp2_home/etc/apps"
 alias rr2="sp2 restart"
 alias sclean2="sp2 clean eventdata -f"
-alias ssclean2="sp2 stop && sp2 clean eventdata -f && sp2 start"
+alias ssclean2="sp2 stop && sclean2 && sp2 start"
+alias sssclean2="sp2 stop && sclean2 && log2 && rm -rf * && modinput2 && rm -rf * && sp2 start"
 ### END splunk_alias
 ```
