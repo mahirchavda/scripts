@@ -11,5 +11,6 @@ alias modinput{{ alias_suffix }}="cd $sp{{ alias_suffix }}_home/var/lib/splunk/m
 alias app{{ alias_suffix }}="cd $sp{{ alias_suffix }}_home/etc/apps"
 alias rr{{ alias_suffix }}="sp{{ alias_suffix }} restart"
 alias sclean{{ alias_suffix }}="sp{{ alias_suffix }} clean eventdata -f"
-alias ssclean{{ alias_suffix }}="sp{{ alias_suffix }} stop && sp{{ alias_suffix }} clean eventdata -f && sp{{ alias_suffix }} start"
+alias ssclean{{ alias_suffix }}="sp{{ alias_suffix }} stop && sclean{{ alias_suffix }} && sp{{ alias_suffix }} start"
+alias sssclean{{ alias_suffix }}="sp{{ alias_suffix }} stop && sclean{{ alias_suffix }} && log{{ alias_suffix }} && rm -rf * && modinput{{ alias_suffix }} && rm -rf * && sp{{ alias_suffix }} start"
 ### END {{ script_name }}
