@@ -33,7 +33,7 @@ alias ssclean{alias_suffix}="sp{alias_suffix} stop && sp{alias_suffix} clean eve
 @pytest.mark.parametrize("params,actual_params", zip(params_list, actual_params_list))
 def test_splunk_alias(app, client, params, actual_params):
     res = client.get(
-        "/script/{script_name}".format(script_name=script_name), query_string=params
+        "/{script_name}".format(script_name=script_name), query_string=params
     )
     assert res.status_code == 200
     res_cmds = res.get_data().decode().strip("\n").splitlines()

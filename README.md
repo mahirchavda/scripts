@@ -1,11 +1,14 @@
 # Scripts
 This project provides API endpoints to get my often-used scripts.
 
-Hosted on HEROKU: https://scripts-mahirchavda.herokuapp.com/
+Hosted on HEROKU: 
+  * https://scripts.mahirchavda.com
+  * https://scripts-mahirchavda.herokuapp.com
+
 
 ## Endpoints:
 
-### Script Endpoint: https://scripts-mahirchavda.herokuapp.com/script/<script_name>
+### Script Endpoint: https://scripts.mahirchavda.com/<script_name>
 
 Currently available script_names are:
 * [install_miniconda](#install_miniconda)
@@ -13,21 +16,21 @@ Currently available script_names are:
 
 ---
 
-#### install_miniconda: https://scripts-mahirchavda.herokuapp.com/script/install_miniconda
+#### install_miniconda: https://scripts.mahirchavda.com/install_miniconda
 * returns the bash commands to install miniconda
 
 Example to install miniconda
 ```bash
-curl https://scripts-mahirchavda.herokuapp.com/script/install_miniconda | bash
+curl https://scripts.mahirchavda.com/install_miniconda | bash
 ```
 
 
-#### splunk_alias: https://scripts-mahirchavda.herokuapp.com/script/splunk_alias
+#### splunk_alias: https://scripts.mahirchavda.com/splunk_alias
 * returns the alias for often used splunk cli commands
 
 To configure the alias run below command in your linux shell:
 ```bash
-curl 'https://scripts-mahirchavda.herokuapp.com/script/splunk_alias' >> ~/.bashrc && source ~/.bashrc
+curl 'https://scripts.mahirchavda.com/splunk_alias' >> ~/.bashrc && source ~/.bashrc
 ```
 
 Splunk cli commands and it's alias
@@ -52,8 +55,11 @@ The splunk_alias endpoint also supports two parameters: **splunk_home** and **al
 
 Example:
 ```bash
-$ curl 'https://scripts-mahirchavda.herokuapp.com/script/splunk_alias?splunk_home=/opt/splunk2&alias_suffix=2'
-# output:
+$ curl 'https://scripts.mahirchavda.com/splunk_alias?splunk_home=/opt/splunk2&alias_suffix=2' >> ~/.bashrc && source ~/.bashrc
+```
+
+API Response:
+```bash
 ### START splunk_alias
 # Make Splunk CLI Commands Shorter
 sp2_home="/opt/splunk2"
